@@ -2,9 +2,6 @@
 include_once('Task.html');
 $textarea = $_REQUEST['textarea'];
 if (!empty($textarea)) {
-    $num = 0;
-    $array = "";
-    $call = 0;
     $text = $textarea;
     function generate($text)
     {
@@ -26,16 +23,29 @@ if (!empty($textarea)) {
             yield $text[$i];
         }
     }
-    foreach (generate($textarea) as $val) {
-        $array .= $val[$num];
-    }
-    for ($i = 0; $i < strlen($textarea); $i++) {
-        if ($array[$i] != $text[$i]) {
-            $call++;
+    function request($text)
+    {
+        $array = "";
+        foreach (generate($text) as $val){
+            $num = 0;
+            $array .= $val[$num];
         }
+        return $array;
     }
+    function check ($array, $text)
+    {
+        $call = 0;
+        for ($i = 0; $i < strlen($text); $i++) {
+            if ($array[$i] != $text[$i]) {
+                $call++;
+            }
+        }
+        return $call;
+    }
+    $array = request($textarea);
+    $index = check($array,$text);
     echo $array;
-    echo "<br />".$call;
+    echo "<br />".$index;
 }
 else{
     echo "Введите значение";
