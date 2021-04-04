@@ -8,19 +8,19 @@ if (!empty($password)) {
             $error = "Длина пароля менее 10 символов";
             return false;
         }
-        if (!preg_match("/[a-z]{2,3}/", $str)) {
+        if (!preg_match("/[a-z]{1,3}/", $str)) {
             $error = "Пароль должен содержать не менее 2 строчные буквы";
             return false;
         }
-        if (!preg_match("/[A-Z]{2,3}/", $str)) {
+        if (!preg_match("/[A-Z]{1,3}/", $str)) {
             $error = "Пароль должен содержать не менее 2 прописные буквы";
             return false;
         }
-        if (!preg_match("/[0-9]{2,3}/", $str)) {
+        if (!preg_match("/[0-9]{1,3}/", $str)) {
             $error = "Пароль должен содержать не менее 2 цифры";
             return false;
         }
-        if (!preg_match("/[\\%\\$\\#\\_\\*]{2,3}/", $str)) {
+        if (!preg_match("/[\\%\\$\\#\\_\\*]{1,3}/", $str)) {
             $error = "Пароль должен содержать не менее 2 спец. символа";
             return false;
         }
