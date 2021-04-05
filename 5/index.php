@@ -4,23 +4,23 @@ $password = $_REQUEST['textarea'];
 if (!empty($password)) {
     function valid($str, &$error) //Илья Ефимович, здравствуйте, передачу по ссылке нашел из материала в интернете
     {
-        if (strlen($str) <= 10) {
+        if (strlen($str) < 10) {
             $error = "Длина пароля менее 10 символов";
             return false;
         }
-        if (!preg_match("/[a-z]{1,3}/", $str)) {
+        if (preg_match_all("/[a-z]/", $str)<2) {
             $error = "Пароль должен содержать не менее 2 строчные буквы";
             return false;
         }
-        if (!preg_match("/[A-Z]{1,3}/", $str)) {
+        if (preg_match_all("/[A-Z]/", $str)<2) {
             $error = "Пароль должен содержать не менее 2 прописные буквы";
             return false;
         }
-        if (!preg_match("/[0-9]{1,3}/", $str)) {
+        if (preg_match_all("/[0-9]/", $str)<2) {
             $error = "Пароль должен содержать не менее 2 цифры";
             return false;
         }
-        if (!preg_match("/[\\%\\$\\#\\_\\*]{1,3}/", $str)) {
+        if (preg_match_all("/[\\%\\$\\#\\_\\*]/", $str)<2) {
             $error = "Пароль должен содержать не менее 2 спец. символа";
             return false;
         }
