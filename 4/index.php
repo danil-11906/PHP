@@ -69,10 +69,14 @@ if ((!empty($textarea))&(!empty($num))) {
 
 
 
+
+
     $chance = array();
     for ($i = 0; $i < count($textarea); $i++) {
         $chance[$i + 1] = round($textarea[$i][count($textarea[$i])-1]/$counter[0],4);
     }
+
+
     include_once ('generate.php');
     $realResult = request($arrayWithNotElem, $chance, $num);
 
