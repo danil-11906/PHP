@@ -1,8 +1,18 @@
 <?php
 ini_set('max_execution_time', 900);
 include_once('Task.html');
-$textarea = $_REQUEST['textarea'];
-$checkbox = $_POST['check'];
+if (isset($_POST['textarea'])){
+    if (isset($_POST['textarea'])){
+        $textarea = $_POST['textarea'];
+        $checkbox = $_POST['check'];
+    }
+    else {
+        echo "please select the correct number of checkboxes";
+    }
+}
+else {
+    echo "Please write site";
+}
 if (!empty($textarea)) {
     if (!empty($checkbox)){
         if (count($checkbox)==1) {
@@ -29,14 +39,16 @@ if (!empty($textarea)) {
                 if(count($out)>3) {
                     $int = array();
                     for ($i = 0; $i < count($out); $i++) {
-                        preg_match("/([0-9]{1,3}[\.]){3}[0-9]{1,3}/", $out[$i], $in);
-                        $int[$i] = $in[0];
-                        if (strlen($int[$i]) > 3) {
-                            $counter++;
-                            if (($counter == 1) | ($i == count($out) - 3)) {
-                                echo "<strong>" . $int[$i] . "</strong>" . " ";
-                            } else {
-                                echo $int[$i] . " ";
+                        if (preg_match("/([0-9]{1,3}[\.]){3}[0-9]{1,3}/", $out[$i])) {
+                            preg_match("/([0-9]{1,3}[\.]){3}[0-9]{1,3}/", $out[$i], $in);
+                            $int[$i] = $in[0];
+                            if (strlen($int[$i]) > 3) {
+                                $counter++;
+                                if (($counter == 1) | ($i == count($out) - 3)) {
+                                    echo "<strong>" . $int[$i] . "</strong>" . " ";
+                                } else {
+                                    echo $int[$i] . " ";
+                                }
                             }
                         }
                     }
@@ -50,10 +62,4 @@ if (!empty($textarea)) {
             echo "please select the correct number of checkboxes";
         }
     }
-    else {
-        echo "please select the correct number of checkboxes";
-    }
-}
-else {
-    echo "Please write site";
 }
