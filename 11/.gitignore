@@ -8,3 +8,6 @@ vendor/
 # Editor-based HTTP Client requests
 /httpRequests/
 vendor/
+.idea
+composer.cmd
+composer.phar/
