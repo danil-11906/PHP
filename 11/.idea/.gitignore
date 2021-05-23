@@ -1,5 +1,4 @@
-.idea/**
-/vendor/**
+vendor/
 # Default ignored files
 /shelf/
 /workspace.xml
