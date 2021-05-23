@@ -33,7 +33,7 @@ class Logger implements \Psr\Log\LoggerInterface
                 $array = json_decode($string);
             }
         }
-        array_push($array,$json);
+        array_push($array,json_decode($json));
         file_put_contents($fileName, json_encode($array, JSON_UNESCAPED_UNICODE));
     }
 
