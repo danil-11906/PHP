@@ -9,5 +9,3 @@ vendor/
 /httpRequests/
 vendor/
 .idea
-composer.cmd
-composer.phar/
